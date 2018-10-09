@@ -1,0 +1,23 @@
+{
+  "name": "chuck-backend",
+  "version": "1.0.0",
+  "description": "backend for the Chuck Norris joke fetcher",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vrsttl/Chuck-Backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vrsttl/Chuck-Backend/issues"
+  },
+  "homepage": "https://github.com/vrsttl/Chuck-Backend#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "nodemailer": "^4.6.8"
+  }
+}
