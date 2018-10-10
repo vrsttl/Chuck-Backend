@@ -3,7 +3,14 @@
 const express = require('express');
 const app = express();
 const nodemailer = require('nodemailer');
-const PORT = 3000;
+const PORT = 3030;
+
+app.use(express.json());
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 const sendMail = (addresses, joke) => {
   nodemailer.createTestAccount((err) => {
@@ -33,12 +40,12 @@ const sendMail = (addresses, joke) => {
     });
   });
 }
-app.use(express.json());
 
 app.post('/', (req, res) => {
   const emails = req.body.emails;
+  console.log(emails);
   const currentJoke = req.body.currentJoke;
-  if (emails.length > 0) {
+  if (emails) {
     sendMail(emails, currentJoke);
     res.json({
       result: "OK"
