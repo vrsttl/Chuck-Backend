@@ -1,9 +1,11 @@
 'use strict';
 
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
 const nodemailer = require('nodemailer');
-const PORT = 3030;
+const PORT = process.env.SERVPORT;
 
 app.use(express.json());
 app.use((req, res, next) => {
@@ -56,7 +58,7 @@ app.post('/', (req, res) => {
     })
   } else {
     res.json({
-      result: "Not sufficient email addresses received."
+      result: "Insufficient email addresses received."
     })
   }
 });
