@@ -49,7 +49,6 @@ const sendMail = (addresses, joke) => {
 
 app.post('/', (req, res) => {
   const emails = req.body.emails;
-  console.log('emails', emails);
   const currentJoke = req.body.currentJoke.currentJoke;
   if (emails) {
     sendMail(emails, currentJoke);
