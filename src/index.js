@@ -28,7 +28,11 @@ const sendMail = (addresses, joke) => {
       from: 'Attila Veres <foo@example.com>',
       to: `${addresses}`,
       subject: 'Hello ✔',
-      html: `${joke}` // html body
+      html: `<div>
+                <h1 style="text-align: center; color:red; font-size:34px;">Your Chuck Norris joke of the day...</h1>
+                <h2 style="text-align: center; color:blue;">${joke}</h2>
+             </div>
+      `
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
@@ -43,8 +47,8 @@ const sendMail = (addresses, joke) => {
 
 app.post('/', (req, res) => {
   const emails = req.body.emails;
-  console.log(emails);
-  const currentJoke = req.body.currentJoke;
+  console.log('emails', emails);
+  const currentJoke = req.body.currentJoke.currentJoke;
   if (emails) {
     sendMail(emails, currentJoke);
     res.json({
