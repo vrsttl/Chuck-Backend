@@ -15,14 +15,16 @@ app.use((req, res, next) => {
 });
 
 const sendMail = (addresses, joke) => {
+  const authName = process.env.AUTH_NAME;
+  const authPass = process.env.AUTH_PASS;
   nodemailer.createTestAccount((err) => {
     let transporter = nodemailer.createTransport({
       host: 'smtp.ethereal.email',
       port: 587,
       secure: false,
       auth: {
-        user: 'xt3k5kzkqlwpbpyv@ethereal.email',
-        pass: '6wg6USy6vbgNkJFhqY'
+        user: authName,
+        pass: authPass
       }
     });
 
