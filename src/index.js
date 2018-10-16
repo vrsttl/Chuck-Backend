@@ -61,8 +61,7 @@ app.post('/', (req, res) => {
     res.json({
       result: "Error: There's no joke to send."
     })
-  }
-  else {
+  } else {
     res.json({
       result: "Error: Insufficient email addresses received."
     })
