@@ -52,14 +52,19 @@ const sendMail = (addresses, joke) => {
 app.post('/', (req, res) => {
   const emails = req.body.emails;
   const currentJoke = req.body.currentJoke.currentJoke;
-  if (emails) {
+  if (emails && currentJoke) {
     sendMail(emails, currentJoke);
     res.json({
       result: "OK"
     })
-  } else {
+  } else if (!currentJoke) {
     res.json({
-      result: "Insufficient email addresses received."
+      result: "Error: There's no joke to send."
+    })
+  }
+  else {
+    res.json({
+      result: "Error: Insufficient email addresses received."
     })
   }
 });
